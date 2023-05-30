@@ -1,3 +1,4 @@
+import Store, {useDispatch} from '@/lib/store';
 import '../styles/globals.css';
 
 import {MantineProvider} from '@mantine/core';
@@ -18,7 +19,9 @@ export default function App(props: AppProps) {
         colorScheme: 'light',
       }}
       >
-        <Component {...pageProps} />
+        <Store>
+          <Component {...pageProps} />
+        </Store>
       </MantineProvider>
     </>
   );
