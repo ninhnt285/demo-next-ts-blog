@@ -27,6 +27,7 @@ const storeReducer: Reducer<State, Action> = (state: State, action: Action) => {
       return {
         ...state,
         user: null,
+        isFetching: false,
       };
 
     case 'SET_FETCHING':
@@ -66,9 +67,14 @@ const Store = ({children}: any) => {
     const fetchUser = async () => {
       try {
         const responseData = await fetcher("/user");
-        dispatch({type: 'SET_USER', payload: responseData});
+        if (responseData) {
+          dispatch({type: 'SET_USER', payload: responseData});
+        } else {
+          dispatch({type: 'LOGOUT', payload: null});
+        }
       } catch (err) {
         // console.log(err)
+        dispatch({type: 'SET_FETCHING', payload: false});
       }
     }
 

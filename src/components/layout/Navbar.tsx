@@ -33,15 +33,15 @@ export default function Navbar() {
         <Burger className='lg:hidden text-white' color='white' opened={drawerOpened} onClick={toggleDrawer} />
 
         <ul id='main-nav' className={`${drawerOpened ? '' : 'hidden'} border-teal-600 text-white basis-full border-y my-4 py-2 lg:my-0 lg:py-0 lg:flex lg:gap-x-4 lg:basis-auto lg:border-y-0`}>
-          <li className='text-md font-semibold leading-6 rounded-lg hover:text-teal-200 hover:bg-teal-800'>
-            <Link className='block py-2 px-4 text-white' href='/'>Home</Link>
+          <li className={`text-md font-semibold leading-6 rounded-lg hover:text-teal-200 ${router.pathname == '/' && 'text-teal-50 bg-teal-800'}`}>
+            <Link className='block py-2 px-4' href='/'>Home</Link>
           </li>
 
-          <li className='text-md font-semibold leading-6 rounded-lg hover:text-teal-200 hover:bg-teal-800'>
+          <li className={`text-md font-semibold leading-6 rounded-lg hover:text-teal-200 ${router.pathname == '/blogs' && 'text-teal-50 bg-teal-800'}`}>
           <Link className='block py-2 px-4' href='/blogs'>Blogs</Link>
           </li>
 
-          <li className='text-md font-semibold leading-6 rounded-lg hover:text-teal-200 hover:bg-teal-800'>
+          <li className={`text-md font-semibold leading-6 rounded-lg hover:text-teal-200 ${router.pathname == '/about-me' && 'text-teal-50 bg-teal-800'}`}>
           <Link className='block py-2 px-4' href='/about-me'>About Me</Link>
           </li>
         </ul>
