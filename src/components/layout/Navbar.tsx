@@ -1,13 +1,10 @@
-import {useRequest} from '@/lib/request';
 import {useDispatch, useStore} from '@/lib/store';
 import {removeToken} from '@/lib/token';
 import {Burger, Button, Text} from '@mantine/core';
 import {useDisclosure} from '@mantine/hooks';
-import {log} from 'console';
 import Image from "next/image";
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import {useEffect} from 'react';
 
 export default function Navbar() {
   const [drawerOpened, { toggle: toggleDrawer }] = useDisclosure(false);
@@ -37,22 +34,23 @@ export default function Navbar() {
             <Link className='block py-2 px-4' href='/'>Home</Link>
           </li>
 
-          <li className={`text-md font-semibold leading-6 rounded-lg hover:text-teal-200 ${router.pathname == '/blogs' && 'text-teal-50 bg-teal-800'}`}>
+          <li className={`text-md font-semibold leading-6 rounded-lg hover:text-teal-200 ${router.asPath == '/blogs' && 'text-teal-50 bg-teal-800'}`}>
           <Link className='block py-2 px-4' href='/blogs'>Blogs</Link>
           </li>
 
+          {state.user && (
           <li className={`text-md font-semibold leading-6 rounded-lg hover:text-teal-200 ${router.pathname == '/about-me' && 'text-teal-50 bg-teal-800'}`}>
-          <Link className='block py-2 px-4' href='/about-me'>About Me</Link>
-          </li>
+            <Link className='block py-2 px-4' href='/about-me'>Profile Page</Link>
+          </li>)}
         </ul>
 
         <div id='extra-btns' className={`${drawerOpened ? '' : 'hidden'} flex basis-full flex-col gap-y-2 text-center lg:flex lg:flex-1 lg:flex-row lg:justify-end lg:gap-x-4 lg:p-0`}>
           {state.isFetching ? null : (state.user ? (
-            <Button onClick={onLogout}>Logout</Button>
+            <button className='bg-rose-500 text-white px-4 py-2 rounded-md font-bold hover:bg-gray-100' onClick={onLogout}>Logout</button>
           ) : (
             <>
-              <Link href='/login' className='bg-white text-cyan-600 px-4 py-2 rounded-md font-bold hover:bg-gray-100'>Login</Link>
-              <Link href='/register' className='text-gray-700 bg-teal-300 px-4 py-2 rounded-md font-bold hover:bg-teal-400'>Register</Link>
+              <Link href='/auth/login' className='bg-white text-cyan-600 px-4 py-2 rounded-md font-bold hover:bg-gray-100'>Login</Link>
+              <Link href='/auth/register' className='text-gray-700 bg-teal-300 px-4 py-2 rounded-md font-bold hover:bg-teal-400'>Register</Link>
             </>
           ))}
         </div>

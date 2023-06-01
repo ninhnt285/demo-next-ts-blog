@@ -20,10 +20,10 @@ export async function getToken() {
 
 export async function setToken(token: string | null | undefined) {
   if (token === null || token === undefined) {
-    Cookie.remove("token", {sameSite: "None", secure: true});
+    Cookie.remove("token", {sameSite: "None"});
     return;
   }
-  Cookie.set("token", token, {sameSite: 'None', secure: true});
+  Cookie.set("token", token, {sameSite: 'None'});
 }
 
 export async function removeToken() {

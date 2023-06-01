@@ -11,7 +11,7 @@ export default function Layout({children, className}: LayoutProps) {
     <>
       <Navbar />
       
-      <main className={`container mx-auto ${className ?? ''}`}>
+      <main className={`container px-4 max-w-4xl mx-auto ${className ?? ''}`}>
         {children}
       </main>
     </>

@@ -1,16 +1,18 @@
 import {getAuthHeader, setToken} from './token';
 import {useDispatch} from './store';
 import {apiUrl} from '@/config';
+import {useRouter} from 'next/router';
 
 const authUrls = ['/login', '/register'];
 
 export function useRequest() {
+  const router = useRouter();
   const dispatch = useDispatch();
   
   const fetcher = async (url: string, options: any = {method: 'GET'}) => {
     try {
       const authHeader = await getAuthHeader();
-      console.log(url, authHeader);
+      // console.log(url, authHeader);
       const newOptions = {
         ...options,
         headers: {'Content-Type': 'application/json', ...authHeader},

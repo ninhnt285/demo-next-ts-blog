@@ -44,9 +44,10 @@ export default function Login() {
     <Layout>
       <Card withBorder radius='lg' p='xl' className='max-w-lg mx-auto mt-6 flex flex-col'>
         <Text fz='xl' ta='center' fw='bold' transform='uppercase'>Login</Text>
+        <p className='text-center my-4'>Demo Account: user1@thebigdev.com - 123@123a</p>
         <TextInput placeholder='Your Email' type='email' label='Email Address' {...form.getInputProps('email')} />
         <TextInput placeholder='Password' type='password' label='Password' className='mt-4' {...form.getInputProps('password')} />
-        <Button className='mt-4 text-right' variant='filled'  onClick={onSubmit}>Submit</Button>
+        <button className='mt-8 bg-blue-600 py-3 text-white rounded-lg font-bold hover:bg-blue-500' onClick={onSubmit}>Submit</button>
       </Card>
     </Layout>
   );

@@ -45,12 +45,12 @@ export default function Register() {
   return (
     <Layout>
       <Card withBorder radius='lg' p='xl' className='max-w-lg mx-auto mt-6 flex flex-col'>
-        <Text fz='xl' ta='center' fw='bold' transform='uppercase'>Login</Text>
+        <Text fz='xl' ta='center' fw='bold' transform='uppercase'>Register</Text>
         <TextInput placeholder='Full Name' label='Your Name' {...form.getInputProps('name')} />
         <TextInput placeholder='Your Email' type='email' label='Email Address' className='mt-4' {...form.getInputProps('email')} />
         <TextInput placeholder='Password' type='password' label='Password' className='mt-4' {...form.getInputProps('password')} />
         <TextInput placeholder='Re-type Password' type='password' label='Confirm Password' className='mt-4' {...form.getInputProps('c_password')} />
-        <Button className='mt-4 text-right' variant='filled'  onClick={onSubmit}>Submit</Button>
+        <button className='mt-8 bg-blue-600 py-3 text-white rounded-lg font-bold hover:bg-blue-500' onClick={onSubmit}>Submit</button>
       </Card>
     </Layout>
   );

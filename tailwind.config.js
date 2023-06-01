@@ -12,10 +12,14 @@ module.exports = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      flexBasis: {
+        "1/3-gap-4": "calc(33.3% - (2/3 * 1rem))",
+        "1/2-gap-4": "calc(50% - (2/3 * 1rem))",
+      }
     },
   },
   corePlugins: {
-    preflight: false,
+    preflight: true,
   },
   plugins: [],
   darkMode: 'class',
